@@ -1,17 +1,18 @@
 import string
 import numpy as np
 
+
 class article:
 
     def __init__(self, xyz) -> None:
-        self.xyz = xyz.sort()
+        self.xyz = xyz.sort(reverse=True)
         self.volume = xyz[0] * xyz[1] * xyz[2]
         self.longest_side = max(xyz)
 
 class package:
 
     def __init__(self, xyz) -> None:
-        self.xyz = xyz.sort()
+        self.xyz = xyz.sort(reverse=True)
         self.volume = xyz[0] * xyz[1] * xyz[2]
         self.longest_side = max(xyz)
         self.coordinates = np.array([xyz[0],xyz[1],xyz[2]])
@@ -22,13 +23,13 @@ class package:
     def fits_into_package(self, artic) -> bool:
         # length width check
         # update next (x-value), after one iteration (y-value)
-        upper_right_point = self.reference_point + artic.xyz
+        four_edge_points = self.reference_point + artic.xyz
         # Check outside of package
-        if any(upper_right_point > self.xyz):
+        if any(four_edge_points > self.xyz):
             return False
         # Check for each article already in package
         for artic in self.articles:
-            if upper_right_point in artic:
+            if four_edge_points in artic:
                 pass
                 
 
@@ -51,6 +52,8 @@ def return_longest_side(article):
 articles.sort(key=return_longest_side, reverse=True)
 volume_order = sum(articles.volume)
 
+
+# program flow
 for pack in packages_list:
 
     # generell request
