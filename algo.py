@@ -82,12 +82,12 @@ for pack in packages:
                                     pack.mark_cells([m,n,k],artic.xyz, artic.rank)
                                     articles.remove(artic)
 
-for x in packages[0].coordinates:
-    for y in x:
-        print(str(y[0])+"/", end="")
-    print()
-print(packages[0].volume)
-print("end")
+#for x in packages[0].coordinates:
+    #for y in x:
+        #print(str(y[0])+"/", end="")
+    #print()
+#print(packages[0].volume)
+#print("end")
 
 
 
