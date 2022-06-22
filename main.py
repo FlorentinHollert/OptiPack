@@ -1,7 +1,7 @@
 import sys
 import time
 from ArucoDetection import CaptureAndMeasure
-from algo import article
+from algo import article, start_algo
 #TODO: 1 ändern der Werte im return value capture & measure
 # 2 Schreiben des aufrufs in main --> 4 werte speichern, besten matchen & werte printen --> kann es sein?
 #hinzügen zur Liste 
@@ -42,7 +42,27 @@ while(True):
     input = ("Press A to scan another item or any other key to continue to packaging")
     if (input != "A"):
         break
-    
+
+# input from image recognition
+article1 = article([15,6,18], 1)
+measuredValues.append(article1)
+article2 = article([11,4,8], 2)
+measuredValues.append(article2)
+article3 = article([6,13,6], 3)
+measuredValues.append(article3)
+article4 = article([6,13,6], 4)
+measuredValues.append(article4)
+article5 = article([11,4,8], 5)
+measuredValues.append(article5)
+article6 = article([6,13,6], 6)
+measuredValues.append(article6)
+article7 = article([6,13,6], 7)
+measuredValues.append(article7)
+article8 = article([11,4,8], 8)
+measuredValues.append(article8)
+
+start_algo(measuredValues)
+
 print(measuredValues[0].xyz)
     
     #find most similar values 
@@ -55,6 +75,3 @@ print(measuredValues[0].xyz)
 # Start Algo
 # Lösung des Problems
 # Front-End
-
-if __name__ == "__main__":
-    pass
