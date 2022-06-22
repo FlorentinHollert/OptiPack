@@ -122,13 +122,5 @@ for pack in packages:
         break
 
 
-for x in packages[0].coordinates:
-    img = plt.imshow(x)
-    plt.show()
-    break
-
-print(packages[0].volume)
-print("end")
-
 
 
