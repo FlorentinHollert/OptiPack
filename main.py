@@ -55,3 +55,6 @@ print(measuredValues[0].xyz)
 # Start Algo
 # Lösung des Problems
 # Front-End
+
+if __name__ == "__main__":
+    pass
