@@ -17,7 +17,7 @@ class package:
         self.longest_side = max(xyz)
         self.coordinates = np.array([xyz[0],xyz[1],xyz[2]])
         self.reference_point = (0, 0, 0)
-        #self.articles = np.array()
+        self.articles = np.array()
 
     
     def fits_into_package(self, artic) -> bool:

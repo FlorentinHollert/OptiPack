@@ -26,7 +26,6 @@ class HomogeneousBgDetector():
         objects_contours.sort()
         objects_contours.reverse()
         object_contours_return = objects_contours[0]
-        print(object_contours_return)
 
 
         return objects_contours, object_contours_return
