@@ -8,15 +8,18 @@ from algo import article
 #soviele iterationen bis nuzer abbricht
 #3 fixen problem mit cm werten
 measuredValues = []
+counter=0
 #input('Press any key to start packaging.\n')
 while(True):
-    #a,b = CaptureAndMeasure.caputureInput()
+    counter = counter + 1
+    a,b = CaptureAndMeasure.caputureInput()
     input("press any key to continue")
-    #c,d = CaptureAndMeasure.caputureInput()
-    a=1.5
-    b=-13.3
-    c=12.9
-    d=-13.5
+    c,d = CaptureAndMeasure.caputureInput()
+    a=abs(a)
+    b=abs(b)
+    c=abs(c)
+    d=abs(d)
+
     ac = a-c
     ad = a-d
     bc = b-c
@@ -25,21 +28,22 @@ while(True):
     ad = abs(ad)
     bc = abs(bc)
     bd = abs(bd)
-    value = max(ac, ad, bc, bd)
+    #rank from 1
+    value = min(ac, ad, bc, bd)
     if value==ac:
-        measuredValues.append(article(a,b,d))
-    if value==ad:
-        measuredValues.append(article(a,b,c))
-    if value==bc:
-        measuredValues.append(article(a,b,d))
-    if value==bd:
-        measuredValues.append(article(a,b,c))
+        measuredValues.append(article([a,b,d], counter))
+    elif value==ad:
+        measuredValues.append(article([a,b,c], counter))
+    elif value==bc:
+        measuredValues.append(article([a,b,d], counter))
+    elif value==bd:
+        measuredValues.append(article([a,b,c], counter))
 
-    input = ("Press A to scan another item and any other key to continue to packaging")
+    input = ("Press A to scan another item or any other key to continue to packaging")
     if (input != "A"):
         break
     
-print(measuredValues)
+print(measuredValues[0].xyz)
     
     #find most similar values 
 # Initialisieren der Variablen (Artikel-array)
