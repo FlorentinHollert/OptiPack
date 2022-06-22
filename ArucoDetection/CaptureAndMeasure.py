@@ -27,6 +27,14 @@ def caputureInput():
             if frame is not None:
                 try:
                     resized = cv2.resize(frame, (1100, 520))
+                    if(measured==True):
+                        cv2.circle(frame, (int(x), int(y)), 5, (0, 0, 255), -1)
+                        cv2.polylines(frame, [box], True, (255, 0, 0), 2)
+                        cv2.putText(frame, "Width {} cm".format(round(object_width, 1)), (int(x - 100), int(y - 20)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+                        cv2.putText(frame, "Height {} cm".format(round(object_height, 1)), (int(x - 100), int(y + 15)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+                        resized = cv2.resize(frame, (1100, 520))
+                        cv2.imshow("Frame", resized)
+
                     if(measured==False):
                         cv2.imshow("Frame", resized)
                     #contours = detector.detect_objects(frame)
@@ -44,7 +52,6 @@ def caputureInput():
                     pixel_cm_ratio = aruco_perimeter / 20
 
                     contours, contourBiggest = detector.detect_objects(frame)
-
                     # Draw objects boundaries
                     for cnt in contours:
                         # Get rect
@@ -77,13 +84,18 @@ def caputureInput():
                     #print((contourBiggest[0][0][1]))
                     #print(len(contourBiggest[1]))
 
-                except: pass
-                cv2.waitKey(2)
-    except KeyboardInterrupt: 
-        contourBiggestWidth=contourBiggest[0][0][0]/pixel_cm_ratio
-        contourBiggesHeight=contourBiggest[0][0][1]/pixel_cm_ratio
-        print(contourBiggestWidth)
-        print(contourBiggesHeight)
+                except: cv2.waitKey(2)
+                #measured=False 
+    except KeyboardInterrupt:
+        rectBig = cv2.minAreaRect(contourBiggest)
+        (x, y), (w, h), angleBig = rectBig
+        object_width = w / pixel_cm_ratio
+        object_height = h / pixel_cm_ratio
 
-        return contourBiggestWidth, contourBiggesHeight
+        #contourBiggestWidth=contourBiggest[0][0][0]/pixel_cm_ratio
+        #contourBiggesHeight=contourBiggest[0][0][1]/pixel_cm_ratio
+        print(object_width)
+        print(object_height)
+
+        return object_width, object_height
     #object detector laden
