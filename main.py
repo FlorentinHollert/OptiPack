@@ -9,11 +9,11 @@ from algo import article
 #3 fixen problem mit cm werten
 measuredValues = []
 counter=0
-#input('Press any key to start packaging.\n')
+input('Press any key to start packaging.\n')
 while(True):
     counter = counter + 1
     a,b = CaptureAndMeasure.caputureInput()
-    input("press any key to continue")
+    input("Rotate your item and press any key to continue")
     c,d = CaptureAndMeasure.caputureInput()
     a=abs(a)
     b=abs(b)
